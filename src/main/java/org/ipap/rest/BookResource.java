@@ -2,6 +2,7 @@ package org.ipap.rest;
 
 import org.ipap.rest.data.Book;
 
+import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -28,7 +29,7 @@ public class BookResource {
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Response addBook(Book book) {
+    public Response addBook(@Valid Book book) {
         if(books.size() > 5) {
             return Response.status(400).entity("No more than 5 books allowed").build();
         }
